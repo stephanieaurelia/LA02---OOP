@@ -1,0 +1,148 @@
+package sess7apr4;
+import java.util.Scanner;
+
+class Personn {
+	public String name;
+	public String born_date;
+	
+	public Personn(String name, String born_date) {
+		this.name = name;
+		this.born_date = born_date;
+	}
+	
+	public void sleep() {
+		System.out.println("I'm sleeping");
+		
+	}
+}
+
+class Mahasiswa extends Personn {
+	public String student_id;
+	public int point;
+	
+	public Mahasiswa(String name, String born_date, String student_id, int point) {
+		super(name, born_date);
+		this.student_id = student_id;
+		this.point = point;
+	}
+	
+	public void helpingDosen() {
+		point += 10;
+		System.out.println(name + " +10 points from helping Dosen");
+	}
+}
+
+class Dosen extends Personn {
+	public String code_dosen;
+	public int point;
+	
+	public Dosen(String name, String born_date, String code_dosen) {
+		super(name, born_date);
+		// TODO Auto-generated constructor stub
+		this.code_dosen = code_dosen;
+		this.point = 0;
+	}
+	
+	public void selfDev() {
+		point += 5;
+		System.out.println(name + " +5 points from doing self development");
+	}
+	
+	public void teach() {
+		point += 5;
+		System.out.println(name + " +5 points from doing teaching");
+	}
+	
+	public void p2m() {
+		point += 5;
+		System.out.println(name + " +5 points from doing p2m");
+	}
+	
+	public void research() {
+		point += 5;
+		System.out.println(name + " +5 points from doing research");
+	}
+	
+	public void otherWorks() {
+		point += 5;
+		System.out.println(name + " +5 points from doing other works");
+	}
+}
+
+public class quizapril2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		boolean exit = false;
+		
+		while(!exit) {
+			System.out.println("Welcome!\nSelect an option:");
+			System.out.println("1. Person");
+			System.out.println("2. Mahasiswa");
+			System.out.println("3. Dosen");
+			System.out.println("4. Exit");
+			
+			int input = s.nextInt();
+			s.nextLine();
+			
+			switch (input) {
+			case 1:
+				System.out.println("Enter Person's name: ");
+				String name = s.nextLine();
+				
+				System.out.println("Enter Born date: ");
+				String born_date = s.nextLine();
+				
+				Personn person = new Personn(name, born_date);
+				System.out.println("Successfully added new person!");
+				
+				person.sleep();
+				break;
+				
+			case 2:
+				System.out.println("Enter Mahasiswa's name: ");
+				String m_name = s.nextLine();
+				
+				System.out.println("Enter Born date: ");
+				String m_bdate = s.nextLine();
+				
+				System.out.println("Enter Student iD: ");
+				String student_id = s.nextLine();
+				
+				Mahasiswa mahasiswa = new Mahasiswa(m_name, m_bdate, student_id, 0);
+				System.out.println("Succesfully added new mahasiswa!");
+				mahasiswa.helpingDosen();
+				break;
+				
+			case 3:
+				System.out.println("Enter Dosen's name: ");
+				String d_name = s.nextLine();
+				
+				System.out.println("Enter Born date: ");
+				String d_bdate = s.nextLine();
+				
+				System.out.println("Enter Dosen code: ");
+				String code_dosen = s.nextLine();
+				
+				Dosen dosen = new Dosen(d_name, d_bdate, code_dosen);
+				System.out.println("Succesfully added new dosen!");
+				dosen.selfDev();
+				dosen.teach();
+				dosen.p2m();
+				dosen.research();
+				dosen.otherWorks();
+				System.out.println(dosen.name + " has " + dosen.point + " points");
+				break;
+			
+			case 4:
+				exit = true;
+				break;
+			
+			default:
+				System.out.println("Invalid input.\nChoose again: ");
+				break;
+			}  
+		}
+	}
+}
